@@ -1,0 +1,206 @@
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: #1a202c;
+}
+
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  animation: shapeAnimation 10s infinite ease-in-out;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes shapeAnimation {
+  0% {
+    transform: translateY(-100%) scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.game-container {
+  width: 80%;
+  max-width: 400px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  background: #545754;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.75rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.player-mode {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.player-mode button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #747674;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 0.5rem;
+}
+
+.player-mode button:hover {
+  background-color: #5a5e5b;
+}
+
+.game-board {
+  display: grid;
+  gap: 5px; /* Adjusted spacing for better balance */
+  padding: 15px;
+  grid-template-columns: repeat(3, 1fr); /* Adjusted for 6 cards */
+}
+
+.card {
+  width: 100%;
+  height: 80px; /* Slightly smaller than before for balance */
+  perspective: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border: 2px solid transparent;
+  animation: borderAnimation 2s infinite;
+}
+
+@keyframes borderAnimation {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #4CAF50;
+  }
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  transform-origin: center;
+}
+
+.card.flip .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px; /* Slightly reduced rounded corners */
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1); /* Reduced inner shadow */
+}
+
+.card-front {
+  background: #eaeaea;
+}
+
+.card-back {
+  background: no-repeat center center;
+  background-size: cover;
+  transform: rotateY(180deg);
+}
+
+.scoreboard {
+  text-align: center;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+
+.scoreboard p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #7a817a;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #474847;
+}
+
+.congratulations,
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.congratulations.show,
+.game-over.show {
+  display: flex;
+}

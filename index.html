@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Game App</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Animation -->
+  <div class="background-animation">
+    <div class="shape" style="width: 40px; height: 40px; background: #ff6f61; top: 10%; left: 20%; animation-delay: 1s;"></div>
+    <div class="shape" style="width: 50px; height: 50px; background: #6b5b95; top: 30%; left: 60%; animation-delay: 2s;"></div>
+    <div class="shape" style="width: 30px; height: 30px; background: #88b04b; top: 50%; left: 80%; animation-delay: 3s;"></div>
+    <div class="shape" style="width: 45px; height: 45px; background: #f7db4d; top: 70%; left: 40%; animation-delay: 4s;"></div>
+    <div class="shape" style="width: 35px; height: 35px; background: #ff6f61; top: 90%; left: 10%; animation-delay: 5s;"></div>
+  </div>
+
+  <div class="game-container">
+    <div class="header">Memory Game</div>
+    <div class="player-mode">
+      <button onclick="setPlayerMode('single')">Single Player</button>
+      <button onclick="setPlayerMode('multi')">Two Players</button>
+    </div>
+    <div id="game-board" class="game-board"></div>
+    <div class="scoreboard">
+      <p id="score-player1-label">Player 1 Score: <span id="score-player1">0</span></p>
+      <p id="score-player2-label" style="display: none;">Player 2 Score: <span id="score-player2">0</span></p>
+      <p>Time Left: <span id="timer">60</span> seconds</p>
+      <button onclick="startGame()">Start Game</button>
+    </div>
+    <div class="congratulations">
+      <h2>Congratulations!</h2>
+      <p>All cards matched!</p>
+      <p>Player 1 Final Score: <span id="final-score-player1">0</span></p>
+      <p id="final-score-player2-label" style="display: none;">Player 2 Final Score: <span id="final-score-player2">0</span></p>
+      <button onclick="restartGame()">Play Again</button>
+    </div>
+    <div class="game-over">
+      <h2>Game Over!</h2>
+      <p>Time's up!</p>
+      <p>Player 1 Final Score: <span id="final-score-game-over-player1">0</span></p>
+      <p id="final-score-game-over-player2-label" style="display: none;">Player 2 Final Score: <span id="final-score-game-over-player2">0</span></p>
+      <button onclick="restartGame()">Try Again</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
